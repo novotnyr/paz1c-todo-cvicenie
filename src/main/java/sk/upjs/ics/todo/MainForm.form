@@ -32,6 +32,8 @@
                       <Component id="terminDatePicker" min="-2" pref="294" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="pridatButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="odstranitButton" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Component id="jScrollPane1" max="32767" attributes="0"/>
               </Group>
@@ -47,6 +49,7 @@
                   <Component id="ulohaTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="pridatButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="terminDatePicker" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="odstranitButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="21" max="32767" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="234" max="-2" attributes="0"/>
@@ -89,6 +92,14 @@
       </Events>
     </Component>
     <Component class="org.jdesktop.swingx.JXDatePicker" name="terminDatePicker">
+    </Component>
+    <Component class="javax.swing.JButton" name="odstranitButton">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Odstr&#xe1;ni&#x165;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="odstranitButtonActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
