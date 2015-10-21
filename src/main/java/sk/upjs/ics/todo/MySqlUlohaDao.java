@@ -31,5 +31,11 @@ public class MySqlUlohaDao implements UlohaDao {
         BeanPropertyRowMapper<Uloha> mapper = BeanPropertyRowMapper.newInstance(Uloha.class);
         return jdbcTemplate.query(sql, mapper);
     }
+
+    @Override
+    public void odstranit(Uloha uloha) {
+        String sql = "DELETE FROM uloha WHERE id = ?";
+        jdbcTemplate.update(sql, uloha.getId());
+    }
     
 }
