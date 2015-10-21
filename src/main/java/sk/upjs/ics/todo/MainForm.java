@@ -22,7 +22,11 @@ public class MainForm extends javax.swing.JFrame {
      */
     public MainForm() {
         initComponents();
-        List<Uloha> ulohy = ulohaDao.dajVsetky();        
+        refresh();        
+    }
+
+    private void refresh() {
+        List<Uloha> ulohy = ulohaDao.dajVsetky();
         ulohyList.setListData(ulohy.toArray());
     }
 
@@ -107,18 +111,14 @@ public class MainForm extends javax.swing.JFrame {
         
         ulohaDao.pridat(uloha);
         
-        List<Uloha> ulohy = ulohaDao.dajVsetky();
-        ulohyList.setListData(ulohy.toArray());
+        refresh();
     }//GEN-LAST:event_pridatButtonActionPerformed
 
     private void odstranitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_odstranitButtonActionPerformed
-        // dajak vytiahnem z ulohyList oznacenu ulohu
-        // a zmazem ju
         Uloha uloha = (Uloha) ulohyList.getSelectedValue();
         ulohaDao.odstranit(uloha);
 
-        List<Uloha> ulohy = ulohaDao.dajVsetky();
-        ulohyList.setListData(ulohy.toArray());
+        refresh();
     }//GEN-LAST:event_odstranitButtonActionPerformed
 
     /**
