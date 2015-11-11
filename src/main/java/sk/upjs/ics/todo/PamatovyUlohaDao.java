@@ -37,4 +37,9 @@ public class PamatovyUlohaDao implements UlohaDao {
         ulohy.remove(uloha);
     }
 
+    @Override
+    public void upravit(Uloha uloha) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }
