@@ -131,13 +131,17 @@ public class UlohaForm extends javax.swing.JDialog {
             JOptionPane.showMessageDialog(this, "Názov musí byť vyplnený");
             return;
         }
-        if(terminDatePicker.getDate().before(new Date())) {
+        
+        Date termin = terminDatePicker.getDate();
+        if(termin == null) {
+            termin = new Date();
+        } else if(termin.before(new Date())) {
             JOptionPane.showMessageDialog(this, "Termín nesmie byť v minulosti");
             return;
         }
         
         uloha.setNazov(nazovTextField.getText());
-        uloha.setDate(terminDatePicker.getDate());
+        uloha.setDate(termin);
         uloha.setSplnena(splnenaCheckBox.isSelected());
         
         ulohaDao.upravit(uloha);
