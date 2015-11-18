@@ -6,6 +6,8 @@
 package sk.upjs.ics.todo;
 
 import java.awt.Frame;
+import java.util.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -27,6 +29,8 @@ public class UlohaForm extends javax.swing.JDialog {
     UlohaForm(Frame parent, boolean modal, Uloha uloha) {
         super(parent, modal);
         initComponents();
+        
+        setLocationRelativeTo(null);
         
         this.uloha = uloha;
         
@@ -69,6 +73,11 @@ public class UlohaForm extends javax.swing.JDialog {
         });
 
         stornoButton.setText("Storno");
+        stornoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                stornoButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -117,6 +126,16 @@ public class UlohaForm extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
+        String nazov = nazovTextField.getText();
+        if(nazov.trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Názov musí byť vyplnený");
+            return;
+        }
+        if(terminDatePicker.getDate().before(new Date())) {
+            JOptionPane.showMessageDialog(this, "Termín nesmie byť v minulosti");
+            return;
+        }
+        
         uloha.setNazov(nazovTextField.getText());
         uloha.setDate(terminDatePicker.getDate());
         uloha.setSplnena(splnenaCheckBox.isSelected());
@@ -125,6 +144,10 @@ public class UlohaForm extends javax.swing.JDialog {
         
         setVisible(false);
     }//GEN-LAST:event_okButtonActionPerformed
+
+    private void stornoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_stornoButtonActionPerformed
+        setVisible(false);
+    }//GEN-LAST:event_stornoButtonActionPerformed
 
     /**
      * @param args the command line arguments
